@@ -1,10 +1,10 @@
 {
-   "abstract" : "Spell-and-quality check for texts, including novels. ",
+   "abstract" : "A module for testing ",
    "author" : [
       "JJ Merelo <jj@merelo.net>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "ExtUtils::MakeMaker version 6.6302, CPAN::Meta::Converter version 2.120630",
+   "generated_by" : "ExtUtils::MakeMaker version 6.66, CPAN::Meta::Converter version 2.120921",
    "license" : [
       "unknown"
    ],
@@ -12,7 +12,7 @@
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
       "version" : "2"
    },
-   "name" : "Text-Hoborg",
+   "name" : "Test-Text",
    "no_index" : {
       "directory" : [
          "t",
@@ -33,13 +33,13 @@
       "runtime" : {
          "requires" : {
             "File::Slurp" : "0",
-            "Lingua::EN::Fathom" : "0.25",
             "Test::More" : "0",
+            "Test::Output" : "1.03",
             "Text::Hunspell" : "2.08",
             "version" : "0"
          }
       }
    },
    "release_status" : "stable",
-   "version" : "v0.0.6"
+   "version" : "v0.0.3"
 }
