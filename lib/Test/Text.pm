@@ -11,8 +11,15 @@ use version; our $VERSION = qv('0.0.3'); # First version elaborated from old one
 sub new {
   my $class = shift;
   my $dir = shift;
+  my @files = @_;
+  if (!@files ) {
+    @files = glob("$dir/*.md $dir/*.txt)");
+  } else {
+    @files = map( "$dir/$_", @files );
+  }
   my $self = { 
-      _dir => $dir
+	      _dir => $dir,
+	      _files => \@files
   };
   bless  $self, $class;
   return $self;
@@ -23,9 +30,9 @@ sub dir {
     return $self->{'_dir'};
 }
 
-sub text {
+sub files {
   my $self = shift;
-  return $self->{'_text'};
+  return $self->{'_files'};
 }
 
 sub text_file {
