@@ -87,7 +87,17 @@ This document describes Test::Text version 0.0.3
 =head1 SYNOPSIS
 
     use Test::Text;
-    
+
+    my $dir = "path/to/text_dir"; 
+    my $data = "path/to/data_dir"; 
+
+    my $tesxt = new Test::Text $text_dir, $dict_dir;
+
+   $tesxt = new Test::Text $text_dir, $dict_dir, $this_file, $that_file;
+
+   $testxt->check(); # spell-checks plain or markdown text in that dir or just passed
+
+
 =head1 DESCRIPTION
 
 This started as a spell and quality check for my novel, "Manuel the
@@ -96,7 +106,8 @@ any kind of markdown-formatted text, be it fiction or non-fiction. The first ver
 as documentation, the novel itself (check it out at L<Text::Hoborg::Manuel> and also in the test
 directory the markdown source. 
 
-This module is a more general text-tester (that's a C<tesxter>) which can be used on any external set of texts. 
+This module is a more general text-tester (that's a C<tesxter>) which can be used on any external set of texts.  
+This all came from the idea that L<writing is like software development|https://medium.com/i-m-h-o/6d154a43719c>, which I'm using throughout. 
 
 =head1 INTERFACE
 
@@ -113,6 +124,9 @@ Returns the files it's using
 Returns the dir the source file is in. Since this is managed from the
 object, it is useful for other functions.
 
+=head2 check
+
+Check defined files
 
 =head1 DEPENDENCIES
 
