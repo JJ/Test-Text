@@ -17,6 +17,8 @@ my $text = new Test::Text $text_dir;
 is( $text->dir, $text_dir, "Text directory");
 is( scalar( @{$text->files} ), 2, "Files");
 
+$text = new Test::Text $text_dir, 'text.md';
+is( scalar( @{$text->files} ), 1, "Files");
 
 done_testing();
 
