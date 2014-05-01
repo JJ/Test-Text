@@ -5,8 +5,10 @@ use strict;
 use Carp;
 use File::Slurp 'read_file';
 use Text::Hunspell;
+use v5.14;
 
 use version; our $VERSION = qv('0.0.3'); # First version elaborated from old one
+our $word_re = qr/([\w\'áéíóúÁÉÍÓÚñÑ]+)/;
 
 # Module implementation here
 sub new {
@@ -33,6 +35,7 @@ sub new {
 				   );
   croak if !$speller;
   $self->{'_speller'} = $speller;
+  $speller->add_dic("$dir/words.dic"); #word.dic should be in the text directory
   return $self;
 }
 
@@ -46,9 +49,24 @@ sub files {
   return $self->{'_files'};
 }
 
-sub text_file {
+sub check {
   my $self = shift;
-  return $self->{'_text_file'};
+  my $speller = $self->{'_speller'};
+  my $count = 1;
+  for my $f ( @{$self->files}) {
+    my $file_content =read_file($f);
+    my @words = split /\s+/, $file_content;
+    for my $w (@words) {
+      my ($stripped_word) = ( $w =~ $word_re );
+      next if !$stripped_word;
+      if  ( $speller->check( $stripped_word) ) {
+	print "ok ";
+      } else {
+	print "not ok ";
+      }
+      say $count++," - $stripped_word";
+    }
+  }
 }
 
 
