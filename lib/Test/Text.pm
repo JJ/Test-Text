@@ -1,36 +1,19 @@
-package Text::Hoborg;
+package Test::Text;
 
 use warnings;
 use strict;
 use Carp;
 use File::Slurp 'read_file';
 
-use version; our $VERSION = qv('0.0.6'); #(Hopefully) first
-                                         #non-test-failing version
-
-our @appendices = qw(characters.md geography.md); #auxiliary and additional files
+use version; our $VERSION = qv('0.0.3'); # First version elaborated from old one
 
 # Module implementation here
 sub new {
   my $class = shift;
   my $dir = shift;
-  if ( ! $dir ) {
-      $dir = -d "../text" ? "../text": "../../text";
-      $dir = -d $dir ? $dir : "t";
-  }
-  my $text_file = "$dir/text.md";
-  my $text = read_file($text_file);
   my $self = { 
-      _dir => $dir,
-      _text => $text,
-      _text_file => $text_file,
-      _appendices => {} 
+      _dir => $dir
   };
-  for my $a (@appendices ) {
-      $text_file = "$dir/$a";
-      $text = read_file($text_file);
-      $self->{'_appendices'}{$a} = $text;
-  }
   bless  $self, $class;
   return $self;
 }
@@ -50,11 +33,6 @@ sub text_file {
   return $self->{'_text_file'};
 }
 
-sub appendices {
-    my $self = shift;
-    return $self->{'_appendices'};
-}
-
 
 "All over, all out, all over and out"; # Magic circus phrase said at the end of the show
 
@@ -62,55 +40,47 @@ __END__
 
 =head1 NAME
 
-Text::Hoborg - Spell-and-quality check for texts, including novels. 
+Test::Text - A module for testing 
 
 
 =head1 VERSION
 
-This document describes Text::Hoborg version 0.0.5
+This document describes Test::Text version 0.0.3
 
 
 =head1 SYNOPSIS
 
-    use Text::Hoborg;
+    use Test::Text;
     
 =head1 DESCRIPTION
 
 This started as a spell and quality check for my novel, "Manuel the
 Magnificent Mechanical Man". Eventually, it can be used for checking
-any kind of markdown-formatted text, be it fiction or non-fiction. It
-includes, as documentation, the novel itself (check it out at L<Text::Hoborg::Manuel> and also in the test
+any kind of markdown-formatted text, be it fiction or non-fiction. The first version included
+as documentation, the novel itself (check it out at L<Text::Hoborg::Manuel> and also in the test
 directory the markdown source. 
+
+This module is a more general text-tester (that's a C<tesxter>) which can be used on any external set of texts. 
 
 =head1 INTERFACE
 
-=head2 new [$dir]
+=head2 new $dir [, @files]
 
-Creates an object with the novel text inside
+Creates an object with the novel text inside.  There is no default for the dir since it's supposed to be external. If an array of files is given, only those are used and not all the files inside the directory.
 
-=head2 text 
+=head2 files
 
-Returns the text in original format
-
-=head2 text_file
-
-Returns the name of the text file
+Returns the files it's using
 
 =head2 dir
 
 Returns the dir the source file is in. Since this is managed from the
 object, it is useful for other functions.
 
-=head2 appendices
-
-Returns an array with the appendices included with the novel. It's
-used mainly for checking the spelling.
-
 
 =head1 DEPENDENCIES
 
-Text::Hoborg requires L<Text::Hunspell>. And the Hoborg novel
-L<http://jj.github.io/hoborg> should be somewhere.  It also needs the
+Test::Text requires L<Text::Hunspell> and the 
 C<en_US> dictionnary for C<hunspell>, which you can install with
 C<sudo apt-get install hunspell-en-us> , but since I found no way of expressing this
 dependency within Makefile.PL, I have added it to the C<data> dir,
@@ -123,7 +93,7 @@ JJ Merelo  C<< <jj@merelo.net> >>
 
 =head1 LICENCE AND COPYRIGHT
 
-Copyright (c) 2013, JJ Merelo C<< <jj@merelo.net> >>. All rights reserved.
+Copyright (c) 2014, JJ Merelo C<< <jj@merelo.net> >>. All rights reserved.
 
 This module is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself. See L<perlartistic>.
