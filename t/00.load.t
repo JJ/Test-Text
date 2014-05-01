@@ -14,7 +14,8 @@ if ( !-e $text_dir ) {
 } 
 
 my $text = new Test::Text $text_dir;
-ok( $text->dir, $text_dir);
+is( $text->dir, $text_dir, "Text directory");
+is( scalar( @{$text->files} ), 2, "Files");
 
 
 done_testing();
