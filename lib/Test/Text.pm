@@ -4,14 +4,16 @@ use warnings;
 use strict;
 use Carp;
 use File::Slurp 'read_file';
+use Text::Hunspell;
 
 use version; our $VERSION = qv('0.0.3'); # First version elaborated from old one
 
 # Module implementation here
 sub new {
   my $class = shift;
-  my $dir = shift;
-  my @files = @_;
+  my $dir = shift || croak "Need a directory with text" ;
+  my $data_dir = shift || croak "No default spelling data directory\n";
+  my @files = @_ ; # Use all appropriate files in dir by default
   if (!@files ) {
     @files = glob("$dir/*.md $dir/*.txt)");
   } else {
@@ -19,9 +21,18 @@ sub new {
   }
   my $self = { 
 	      _dir => $dir,
+	      _data_dir => $data_dir,
 	      _files => \@files
   };
   bless  $self, $class;
+
+  # Speller declaration
+  my $speller = Text::Hunspell->new(
+				  "$data_dir/en_US.aff",    # Hunspell affix file
+				  "$data_dir/en_US.dic"     # Hunspell dictionary file
+				   );
+  croak if !$speller;
+  $self->{'_speller'} = $speller;
   return $self;
 }
 
