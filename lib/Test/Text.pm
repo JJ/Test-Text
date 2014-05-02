@@ -7,7 +7,11 @@ use File::Slurp 'read_file';
 use Text::Hunspell;
 use v5.14;
 
-use version; our $VERSION = qv('0.0.3'); # First version elaborated from old one
+use version; our $VERSION = qv('0.0.4'); # First version elaborated from old one
+
+use base 'Test::Builder::Module';
+
+my $CLASS = __PACKAGE__;
 our $word_re = qr/([\w\'áéíóúÁÉÍÓÚñÑ]+)/;
 
 # Module implementation here
@@ -51,20 +55,16 @@ sub files {
 
 sub check {
   my $self = shift;
+  my $tb= $CLASS->builder;
   my $speller = $self->{'_speller'};
-  my $count = 1;
   for my $f ( @{$self->files}) {
     my $file_content =read_file($f);
     my @words = split /\s+/, $file_content;
+
     for my $w (@words) {
       my ($stripped_word) = ( $w =~ $word_re );
       next if !$stripped_word;
-      if  ( $speller->check( $stripped_word) ) {
-	print "ok ";
-      } else {
-	print "not ok ";
-      }
-      say $count++," - $stripped_word";
+      $tb->ok( $speller->check( $stripped_word),  " $stripped_word");
     }
   }
 }

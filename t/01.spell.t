@@ -23,8 +23,7 @@ if ( !-e $text_dir ) {
 
 my $tesxt = new Test::Text $text_dir, $dict_dir;
 
-stdout_like( sub { $tesxt->check();}, qr/ok 154 - station/, "Checking spelling");
-
+$tesxt->check();
 
 done_testing();
 
