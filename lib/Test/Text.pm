@@ -69,6 +69,10 @@ sub check {
   }
 }
 
+sub done_testing {
+  my $tb= $CLASS->builder;
+  $tb->done_testing;
+}
 
 "All over, all out, all over and out"; # Magic circus phrase said at the end of the show
 
@@ -96,6 +100,8 @@ This document describes Test::Text version 0.0.3
    $tesxt = new Test::Text $text_dir, $dict_dir, $this_file, $that_file;
 
    $testxt->check(); # spell-checks plain or markdown text in that dir or just passed
+
+   $testxt->done_testing(); # all over and out
 
 
 =head1 DESCRIPTION
@@ -128,13 +134,27 @@ object, it is useful for other functions.
 
 Check defined files
 
+=head2 done_testing
+
+Called after all tests have been performed
+
 =head1 DEPENDENCIES
 
 Test::Text requires L<Text::Hunspell> and the 
 C<en_US> dictionnary for C<hunspell>, which you can install with
 C<sudo apt-get install hunspell-en-us> , but since I found no way of expressing this
 dependency within Makefile.PL, I have added it to the C<data> dir,
-mainly
+mainly. Latest version requires L<Test::Builder>.
+
+=head1 Development and bugs
+
+Development of this module is hosted at L<GitHub|http://github.com/JJ/Test-Text>. Use it for forking, bug reports, checking it out, whatever
+
+=head1 SEE ALSO
+
+L<Manuel, the Marvelous Mechanical Man|https://www.amazon.com/Manuel-Magnificent-Mechanical-Logical-Natural-History-ebook/dp/B00ED084BK/ref=as_li_ss_til?tag=perltutobyjjmere&linkCode=w01&linkId=4PA3TNKRGGBZKHOE&creativeASIN=B00ED084BK>, the novel that spawned all this, or the other way around. 
+
+
 
 =head1 AUTHOR
 

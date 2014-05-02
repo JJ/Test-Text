@@ -1,7 +1,6 @@
 use lib qw( ../lib ); # -*- cperl -*- 
 
 use Test::More;
-use Test::Output;
 use File::Slurp 'read_file';
 
 use Test::Text;
