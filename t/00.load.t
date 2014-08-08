@@ -8,9 +8,9 @@ BEGIN {
 use_ok( 'Test::Text' );
 }
 
-my $text_dir = 'text';
+my $text_dir = 'text/en';
 if ( !-e $text_dir ) {
-  $text_dir =  "../text";
+  $text_dir =  "../$text_dir";
 }
 
 my $text = new Test::Text $text_dir, "/usr/share/hunspell/"; #dummy dir for now
