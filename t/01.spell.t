@@ -24,5 +24,6 @@ my $tesxt = new Test::Text $text_dir, $dict_dir;
 
 $tesxt->check();
 
+
 done_testing();
 

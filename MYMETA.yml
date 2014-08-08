@@ -1,26 +1,27 @@
 ---
-abstract: 'A module for testing '
+abstract: 'A module for testing text files.'
 author:
   - 'JJ Merelo <jj@merelo.net>'
 build_requires:
-  ExtUtils::MakeMaker: 0
+  ExtUtils::MakeMaker: '0'
 configure_requires:
-  ExtUtils::MakeMaker: 0
+  ExtUtils::MakeMaker: '0'
 dynamic_config: 0
-generated_by: 'ExtUtils::MakeMaker version 6.66, CPAN::Meta::Converter version 2.120921'
+generated_by: 'ExtUtils::MakeMaker version 6.66, CPAN::Meta::Converter version 2.140640'
 license: unknown
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
-  version: 1.4
+  version: '1.4'
 name: Test-Text
 no_index:
   directory:
     - t
     - inc
 requires:
-  File::Slurp: 0
-  Test::More: 0
-  Test::Output: 1.03
-  Text::Hunspell: 2.08
-  version: 0
-version: v0.0.3
+  File::Slurp: '0'
+  Test::More: '0'
+  Test::Output: '1.03'
+  Test::Simple: '1'
+  Text::Hunspell: '2.08'
+  version: '0'
+version: v0.1.0
