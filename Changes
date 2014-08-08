@@ -1,3 +1,7 @@
+2014-08-08  JJ Merelo  <jmerelo@amy>
+
+	* lib/Test/Text.pm: Added text and data for Spanish. 
+
 2014-05-01  Juan J. Merelo Guervós  <jjmerelo@gmail.com>
 
 	* MANIFEST: Changing manifest for the new version
