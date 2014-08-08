@@ -7,18 +7,19 @@ use File::Slurp 'read_file';
 use Text::Hunspell;
 use v5.14;
 
-use version; our $VERSION = qv('0.0.4'); # First version elaborated from old one
+use version; our $VERSION = qv('0.1.0'); # Let's try a couple of languages
 
 use base 'Test::Builder::Module';
 
 my $CLASS = __PACKAGE__;
-our $word_re = qr/([\w\'áéíóúÁÉÍÓÚñÑ]+)/;
+our $word_re = qr/([\w\'áéíóúÁÉÍÓÚñÑçÇ]+)/;
 
 # Module implementation here
 sub new {
   my $class = shift;
   my $dir = shift || croak "Need a directory with text" ;
   my $data_dir = shift || croak "No default spelling data directory\n";
+  my $language = shift || "en_US"; # Defaults to English
   my @files = @_ ; # Use all appropriate files in dir by default
   if (!@files ) {
     @files = glob("$dir/*.md $dir/*.txt)");
@@ -34,8 +35,8 @@ sub new {
 
   # Speller declaration
   my $speller = Text::Hunspell->new(
-				  "$data_dir/en_US.aff",    # Hunspell affix file
-				  "$data_dir/en_US.dic"     # Hunspell dictionary file
+				  "$data_dir/$language.aff",    # Hunspell affix file
+				  "$data_dir/$language.dic"     # Hunspell dictionary file
 				   );
   croak if !$speller;
   $self->{'_speller'} = $speller;
