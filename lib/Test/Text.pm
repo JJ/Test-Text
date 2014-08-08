@@ -59,7 +59,7 @@ sub check {
   my $tb= $CLASS->builder;
   my $speller = $self->{'_speller'};
   for my $f ( @{$self->files}) {
-    my $file_content =read_file($f);
+    my $file_content= read_file($f);
     my @words = split /\s+/, $file_content;
 
     for my $w (@words) {
