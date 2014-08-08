@@ -12,3 +12,5 @@ text/es/texto.md
 text/README.md
 data/en_US.aff		English affixes 
 data/en_US.dic		... and dicts
+data/es.aff		Spanish affixes 
+data/es.dic		... and dictionnary

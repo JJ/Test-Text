@@ -29,7 +29,7 @@ if ( !-e $text_dir ) {
   $text_dir =  "../text/es";
 }
 
-$tesxt = new Test::Text $text_dir, $dict_dir, 'es', ;
+$tesxt = new Test::Text $text_dir, $dict_dir, 'es' ;
 
 done_testing();
 
