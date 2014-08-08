@@ -119,28 +119,30 @@ directory the markdown source.
 This module is a more general text-tester (that's a C<tesxter>) which can be used on any external set of texts.  
 This all came from the idea that L<writing is like software development|https://medium.com/i-m-h-o/6d154a43719c>, which I'm using throughout. 
 
+You will need to install Hunspell and any dictionary you will be using. By default, Hunspell only installs English and a few more (would be hard pressed to tell which ones)
+
 =head1 INTERFACE
 
-=head2 new $dir [, @files]
+=head2 new $text_dir, $data_dir [, $language = 'en_US'] [,  @files]
 
-Creates an object with the novel text inside.  There is no default for the dir since it's supposed to be external. If an array of files is given, only those are used and not all the files inside the directory.
+Creates an object with the novel text inside.  There is no default for the dir since it is supposed to be external. If an array of files is given, only those are used and not all the files inside the directory; these files will be prepended the C<$text_dir> to get the whole path.
 
 =head2 files
 
-Returns the files it's using
+Returns the files it will be checking.
 
 =head2 dir
 
-Returns the dir the source file is in. Since this is managed from the
+Returns the dir the source files are in. Since this is managed from the
 object, it is useful for other functions.
 
 =head2 check
 
-Check defined files
+Check files. This is the only function you will have to call from from your test script.
 
 =head2 done_testing
 
-Called after all tests have been performed
+Called after all tests have been performed.
 
 =head1 DEPENDENCIES
 
