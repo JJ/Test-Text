@@ -81,12 +81,12 @@ __END__
 
 =head1 NAME
 
-Test::Text - A module for testing 
+Test::Text - A module for testing text files.
 
 
 =head1 VERSION
 
-This document describes Test::Text version 0.0.3
+This document describes Test::Text version 0.1.0
 
 
 =head1 SYNOPSIS
@@ -96,13 +96,16 @@ This document describes Test::Text version 0.0.3
     my $dir = "path/to/text_dir"; 
     my $data = "path/to/data_dir"; 
 
-    my $tesxt = new Test::Text $text_dir, $dict_dir;
+    my $tesxt = new Test::Text $text_dir, $dict_dir; # Defaults to English: en_US and all files
 
-   $tesxt = new Test::Text $text_dir, $dict_dir, $this_file, $that_file;
+    $tesxt = new Test::Text $text_dir, $dict_dir, "en_US", $this_file, $that_file; # Tests only those files 
 
-   $testxt->check(); # spell-checks plain or markdown text in that dir or just passed
+    $tesxt = new Test::Text $text_dir, $dict_dir, "es_ES"; # Uses alternate language 
 
-   $testxt->done_testing(); # all over and out
+    $testxt->check(); # spell-checks plain or markdown text in that dir or just passed
+
+    
+    $testxt->done_testing(); # all over and out
 
 
 =head1 DESCRIPTION
