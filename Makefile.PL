@@ -7,6 +7,7 @@ WriteMakefile(
     AUTHOR              => 'JJ Merelo <jj@merelo.net>',
     VERSION_FROM        => 'lib/Test/Text.pm',
     ABSTRACT_FROM       => 'lib/Test/Text.pm',
+    LICENSE => 'gpl',
     PL_FILES            => {},
     PREREQ_PM => {
 		  'Test::More' => 0,

@@ -163,9 +163,14 @@ Called after all tests have been performed.
 
 Test::Text requires L<Text::Hunspell> and the 
 C<en_US> dictionnary for C<hunspell>, which you can install with
-C<sudo apt-get install hunspell-en-us> , but since I found no way of expressing this
+C<sudo apt-get install hunspell-en-us>, but since I found no way of expressing this
 dependency within Makefile.PL, I have added it to the C<data> dir,
-mainly. Latest version requires L<Test::Builder>.
+mainly. Latest version requires L<Test::Builder>. It also includes the
+    C<es> dictionnary in the latest version, also included. If you
+    need any other file, check previously that it's in the
+    C</usr/share/hunspell> dir, but since this module is mainly
+    intended to be used for CI, I had rather include these files in
+    the distro. 
 
 =head1 Development and bugs
 
