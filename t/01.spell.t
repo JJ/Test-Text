@@ -31,5 +31,7 @@ if ( !-e $text_dir ) {
 
 $tesxt = new Test::Text $text_dir, $dict_dir, 'es' ;
 
+just_check( $text_dir, $dict_dir);
+
 done_testing();
 

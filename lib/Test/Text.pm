@@ -13,6 +13,7 @@ use base 'Test::Builder::Module';
 
 my $CLASS = __PACKAGE__;
 our $word_re = qr/([\w\'áéíóúÁÉÍÓÚñÑçÇ]+)/;
+our @EXPORT= 'just_check';
 
 # Module implementation here
 sub new {
@@ -84,12 +85,12 @@ __END__
 
 =head1 NAME
 
-Test::Text - A module for testing text files.
+Test::Text - A module for testing text files. 
 
 
 =head1 VERSION
 
-This document describes Test::Text version 0.1.0
+This document describes Test::Text version 0.1.1
 
 
 =head1 SYNOPSIS
