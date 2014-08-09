@@ -27,6 +27,7 @@ isa_ok( $tesxt, "Test::Text");
 
 $tesxt->check();
 
+just_check( $text_dir, $dict_dir); # procedural interface, exported by default
 diag "Done English tests";
 
 $text_dir = 'text/es';
@@ -39,8 +40,6 @@ isa_ok( $tesxt, "Test::Text");
 $tesxt->check();
 
 diag "Done Spanish tests";
-
-just_check( $text_dir, $dict_dir); # procedural interface, exported by default
 
 done_testing();
 
