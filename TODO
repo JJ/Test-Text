@@ -1,7 +1,7 @@
 # To do
 
 [ ] Eliminate `File::Slurp` dependencies to get done with CPAN bug
-[ ] Add single-function interface
+[x] Add single-function interface
 [ ] Check for other languages
 [ ] Write short HOWTO for those who want to use it for continuous
    integration of their novels.
