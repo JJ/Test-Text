@@ -7,7 +7,7 @@ use File::Slurp 'read_file';
 use Text::Hunspell;
 use v5.14;
 
-use version; our $VERSION = qv('0.1.0'); # Let's try a couple of languages
+use version; our $VERSION = qv('0.1.1'); # Now a more straighforward way
 
 use base 'Test::Builder::Module';
 
@@ -22,7 +22,7 @@ sub new {
   my $language = shift || "en_US"; # Defaults to English
   my @files = @_ ; # Use all appropriate files in dir by default
   if (!@files ) {
-    @files = glob("$dir/*.md $dir/*.txt)");
+    @files = glob("$dir/*.md $dir/*.txt $dir/*.markdown)");
   } else {
     @files = map( "$dir/$_", @files );
   }
@@ -68,6 +68,9 @@ sub check {
       $tb->ok( $speller->check( $stripped_word),  " $stripped_word");
     }
   }
+}
+
+sub just_check {
 }
 
 sub done_testing {
@@ -125,7 +128,12 @@ You will need to install Hunspell and any dictionary you will be using. By defau
 
 =head2 new $text_dir, $data_dir [, $language = 'en_US'] [,  @files]
 
-Creates an object with the novel text inside.  There is no default for the dir since it is supposed to be external. If an array of files is given, only those are used and not all the files inside the directory; these files will be prepended the C<$text_dir> to get the whole path.
+Creates an object with link to text and markdown files identified by
+    extension.  There is no default for
+    the dir since it is supposed to be external. If an array of files
+    is given, only those are used and not all the files inside the
+    directory; these files will be prepended the C<$text_dir> to get
+    the whole path. 
 
 =head2 files
 
@@ -139,6 +147,13 @@ object, it is useful for other functions.
 =head2 check
 
 Check files. This is the only function you will have to call from from your test script.
+
+=head2 just_check $text_dir, $data_dir [, $language = 'en_US'] [,  @files]
+
+Everything you need in a single function. The first directory will
+    include text and auxiliary directory files, the second main
+    dictionary and suffix files. By default all C<*.md> files will be
+    checked. 
 
 =head2 done_testing
 
