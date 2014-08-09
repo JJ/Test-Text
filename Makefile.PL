@@ -14,7 +14,7 @@ WriteMakefile(
 		  'version'    => 0,
 		  'File::Slurp' => 0,
 		  'Text::Hunspell' => 2.08,
-		  'Encoder::Encode' => 0,
+		  'Encode::Encoder' => 0,
 		  'Test::Output' => 1.03,
 		  'Test::Simple' => 1.0
     },
