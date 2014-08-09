@@ -66,7 +66,7 @@ sub check {
     for my $w (@words) {
       my ($stripped_word) = ( $w =~ $word_re );
       next if !$stripped_word;
-      $tb->ok( $speller->check( $stripped_word),  " $stripped_word");
+      $tb->ok( $speller->check( $stripped_word),  $stripped_word);
     }
   }
 }
