@@ -113,7 +113,7 @@ This document describes Test::Text version 0.1.1
 
     $testxt->check(); # spell-checks plain or markdown text in that dir or just passed
 
-    
+    just_check( $dir, $data ); # Exported by default, procedural interface
     $testxt->done_testing(); # all over and out
 
 
@@ -159,7 +159,7 @@ Check files. This is the only function you will have to call from from your test
 Everything you need in a single function. The first directory will
     include text and auxiliary directory files, the second main
     dictionary and suffix files. By default all C<*.md> files will be
-    checked. 
+    checked. Basically equivalent to the creation of an object followed by C<$ob->check()>  
 
 =head2 done_testing
 
