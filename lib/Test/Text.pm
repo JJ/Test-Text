@@ -67,7 +67,7 @@ sub check {
     for my $w (@words) {
       my ($stripped_word) = ( $w =~ $word_re );
       next if !$stripped_word;
-      $tb->ok( $speller->check( encode($stripped_word)->latin1),  $stripped_word);
+      $tb->ok( $speller->check( encoder($stripped_word)->latin1),  $stripped_word);
     }
   }
 }
