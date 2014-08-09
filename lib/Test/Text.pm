@@ -5,6 +5,7 @@ use strict;
 use Carp;
 use File::Slurp 'read_file';
 use Text::Hunspell;
+use Encode::Encoder qw(encoder);
 use v5.14;
 
 use version; our $VERSION = qv('0.1.1'); # Now a more straighforward way
@@ -66,7 +67,7 @@ sub check {
     for my $w (@words) {
       my ($stripped_word) = ( $w =~ $word_re );
       next if !$stripped_word;
-      $tb->ok( $speller->check( $stripped_word),  $stripped_word);
+      $tb->ok( $speller->check( encode($stripped_word)->latin1),  $stripped_word);
     }
   }
 }
