@@ -30,8 +30,9 @@ if ( !-e $text_dir ) {
 }
 
 $tesxt = new Test::Text $text_dir, $dict_dir, 'es' ;
+$tesxt->check();
 
-just_check( $text_dir, $dict_dir);
+just_check( $text_dir, $dict_dir); # procedural interface, exported by default
 
 done_testing();
 

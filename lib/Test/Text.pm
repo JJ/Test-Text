@@ -72,6 +72,11 @@ sub check {
 }
 
 sub just_check {
+    my $dir = shift || croak "Need a directory with text" ;
+    my $data_dir = shift || croak "No default spelling data directory\n";
+    my $language = shift || "en_US"; # Defaults to English
+    my $tesxt = new Test::Text $dir, $data_dir, $language, @_;
+    $tesxt->check();
 }
 
 sub done_testing {
