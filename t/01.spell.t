@@ -30,12 +30,18 @@ $tesxt->check();
 just_check( $text_dir, $dict_dir); # procedural interface, exported by default
 diag "Done English tests";
 
+if  ( -e "data/Spanish.aff" ) {
+  $dict_dir = "data";
+} else {
+  $dict_dir = "../data";
+}
+
 $text_dir = 'text/es';
 if ( !-e $text_dir ) {
   $text_dir =  "../text/es";
 }
 
-$tesxt = new Test::Text $text_dir, $dict_dir, 'es' ;
+$tesxt = new Test::Text $text_dir, $dict_dir, 'Spanish' ;
 isa_ok( $tesxt, "Test::Text");
 $tesxt->check();
 
