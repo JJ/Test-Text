@@ -1,12 +1,12 @@
 {
-   "abstract" : "A module for testing text files.",
+   "abstract" : "A module for testing text files for spelling and (maybe) more. ",
    "author" : [
       "JJ Merelo <jj@merelo.net>"
    ],
    "dynamic_config" : 0,
    "generated_by" : "ExtUtils::MakeMaker version 6.64, CPAN::Meta::Converter version 2.132140",
    "license" : [
-      "unknown"
+      "open_source"
    ],
    "meta-spec" : {
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
@@ -32,6 +32,7 @@
       },
       "runtime" : {
          "requires" : {
+            "Encode::Encoder" : "0",
             "File::Slurp" : "0",
             "Test::More" : "0",
             "Test::Output" : "1.03",
@@ -42,5 +43,5 @@
       }
    },
    "release_status" : "stable",
-   "version" : "v0.1.0"
+   "version" : "v0.1.2"
 }

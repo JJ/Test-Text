@@ -8,7 +8,7 @@ use Text::Hunspell;
 use Encode::Encoder qw(encoder);
 use v5.14;
 
-use version; our $VERSION = qv('0.1.1'); # Now a more straighforward way
+use version; our $VERSION = qv('0.1.2'); # One with an Spanish dictionary that actually works.
 
 use base 'Test::Builder::Module';
 
@@ -91,12 +91,12 @@ __END__
 
 =head1 NAME
 
-Test::Text - A module for testing text files. 
+Test::Text - A module for testing text files for spelling and (maybe) more. 
 
 
 =head1 VERSION
 
-This document describes Test::Text version 0.1.1
+This document describes Test::Text version 0.1.2
 
 
 =head1 SYNOPSIS
@@ -129,7 +129,17 @@ directory the markdown source.
 This module is a more general text-tester (that's a C<tesxter>) which can be used on any external set of texts.  
 This all came from the idea that L<writing is like software development|https://medium.com/i-m-h-o/6d154a43719c>, which I'm using throughout. 
 
-You will need to install Hunspell and any dictionary you will be using. By default, Hunspell only installs English and a few more (would be hard pressed to tell which ones)
+You will need to install Hunspell and any dictionary you will be
+    using. By default, Hunspell install quite a few and you can also
+    use the dictionaries from C<myspell>. Problem is
+    L<Text::Hunspell>, which is the module used for spelling, does not
+    work correctly with dictionaries using Latin1 codification, which
+    are the ones supplied by default with Hunspell. For Spanish, for
+    instance, you will have to obtain your own dictionary with UTF8
+    codification, with the ones supplied with L<Sublime
+    Text|https://github.com/SublimeText/Dictionaries/> being a very
+    good option. The Spanish files obtained there are included in this
+    module for testing purposes.
 
 =head1 INTERFACE
 
@@ -181,13 +191,18 @@ mainly. Latest version requires L<Test::Builder>. It also includes the
 
 =head1 Development and bugs
 
-Development of this module is hosted at L<GitHub|http://github.com/JJ/Test-Text>. Use it for forking, bug reports, checking it out, whatever
+Development of this module is hosted at
+    L<GitHub|http://github.com/JJ/Test-Text>. Use it for forking, bug
+    reports, checking it out, giving stars, whatever. Use also the
+    CPAN interface if you want.
 
 =head1 SEE ALSO
 
-L<Manuel, the Marvelous Mechanical Man|https://www.amazon.com/Manuel-Magnificent-Mechanical-Logical-Natural-History-ebook/dp/B00ED084BK/ref=as_li_ss_til?tag=perltutobyjjmere&linkCode=w01&linkId=4PA3TNKRGGBZKHOE&creativeASIN=B00ED084BK>, the novel that spawned all this, or the other way around. 
-
-
+L<Manuel, the Marvelous Mechanical
+    Man|https://www.amazon.com/Manuel-Magnificent-Mechanical-Logical-Natural-History-ebook/dp/B00ED084BK/ref=as_li_ss_til?tag=perltutobyjjmere&linkCode=w01&linkId=4PA3TNKRGGBZKHOE&creativeASIN=B00ED084BK>,
+    the novel that spawned all this, or the other way around.  Check
+    out also L<Text::Hunspell>, an excellent interface to the
+    C<hunspell> spelling program.
 
 =head1 AUTHOR
 

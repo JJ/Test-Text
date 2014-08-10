@@ -1,5 +1,5 @@
 ---
-abstract: 'A module for testing text files.'
+abstract: 'A module for testing text files for spelling and (maybe) more. '
 author:
   - 'JJ Merelo <jj@merelo.net>'
 build_requires:
@@ -8,7 +8,7 @@ configure_requires:
   ExtUtils::MakeMaker: 0
 dynamic_config: 0
 generated_by: 'ExtUtils::MakeMaker version 6.64, CPAN::Meta::Converter version 2.132140'
-license: unknown
+license: open_source
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: 1.4
@@ -18,10 +18,11 @@ no_index:
     - t
     - inc
 requires:
+  Encode::Encoder: 0
   File::Slurp: 0
   Test::More: 0
   Test::Output: 1.03
   Test::Simple: 1
   Text::Hunspell: 2.08
   version: 0
-version: v0.1.0
+version: v0.1.2
