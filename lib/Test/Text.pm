@@ -8,12 +8,12 @@ use Text::Hunspell;
 use Encode::Encoder qw(encoder);
 use v5.14;
 
-use version; our $VERSION = qv('0.1.3'); # One with an Spanish dictionary that actually works.
+use version; our $VERSION = qv('0.1.4'); # Taking care of Spanish sigils
 
 use base 'Test::Builder::Module';
 
 my $CLASS = __PACKAGE__;
-our $word_re = qr/([\w\'áéíóúÁÉÍÓÚñÑçÇºª¿¡üÜ]+)/;
+our $word_re = qr/([\w\'áéíóúÁÉÍÓÚñÑçÇüÜ]+)/; # Unicode to take care of left question marks
 our @EXPORT= 'just_check';
 
 # Module implementation here
@@ -66,6 +66,7 @@ sub check {
 
     for my $w (@words) {
       my ($stripped_word) = ( $w =~ $word_re );
+      ($stripped_word) = ( $w =~ /([^¿!ªº]+)/ );
       next if !$stripped_word;
       $tb->ok( $speller->check( encoder($stripped_word)->latin1),  $stripped_word);
     }
