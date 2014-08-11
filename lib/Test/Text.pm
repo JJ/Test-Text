@@ -8,12 +8,12 @@ use Text::Hunspell;
 use Encode::Encoder qw(encoder);
 use v5.14;
 
-use version; our $VERSION = qv('0.1.2'); # One with an Spanish dictionary that actually works.
+use version; our $VERSION = qv('0.1.3'); # One with an Spanish dictionary that actually works.
 
 use base 'Test::Builder::Module';
 
 my $CLASS = __PACKAGE__;
-our $word_re = qr/([\w\'áéíóúÁÉÍÓÚñÑçÇ]+)/;
+our $word_re = qr/([\w\'áéíóúÁÉÍÓÚñÑçÇºª¿¡üÜ]+)/;
 our @EXPORT= 'just_check';
 
 # Module implementation here
