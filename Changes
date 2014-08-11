@@ -1,3 +1,9 @@
+2014-08-10  JJ Merelo  <jmerelo@amy>
+
+	* lib/Test/Text.pm (done_testing): Managed to make it work with
+	UTF8 dictionaries, passing now tests. Will try to use it in actual
+	CI for my latest book
+
 2014-08-08  JJ Merelo  <jmerelo@amy>
 
 	* lib/Test/Text.pm: Added text and data for Spanish. 
