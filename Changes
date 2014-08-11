@@ -1,3 +1,7 @@
+2014-08-11  JJ Merelo  <jmerelo@amy>
+
+	* lib/Test/Text.pm: Adds a few Spanish symbols to avoid UTF8 errors and corrects the Spanish affix file to avoid warnings. 
+
 2014-08-10  JJ Merelo  <jmerelo@amy>
 
 	* lib/Test/Text.pm (done_testing): Managed to make it work with
