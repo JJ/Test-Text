@@ -2,13 +2,15 @@ package Test::Text;
 
 use warnings;
 use strict;
+use utf8; # Files and dictionaries might use utf8
+
 use Carp;
 use File::Slurp 'read_file';
 use Text::Hunspell;
 use Encode::Encoder qw(encoder);
 use v5.14;
 
-use version; our $VERSION = qv('0.1.4'); # Taking care of Spanish sigils
+use version; our $VERSION = qv('0.1.5'); # Using utf8 all the way through
 
 use base 'Test::Builder::Module';
 
@@ -61,15 +63,12 @@ sub check {
   my $tb= $CLASS->builder;
   my $speller = $self->{'_speller'};
   for my $f ( @{$self->files}) {
-    my $file_content= read_file($f);
-    my @words = split /\s+/, $file_content;
+    my $file_content= read_file($f, binmode => ':utf8');
+    my @words = ($file_content =~ m{\b(\p{L}+)\b}g);
 
     for my $w (@words) {
-      my ($stripped_word) = ( $w =~ $word_re );
-      next if !$stripped_word;
-      ($stripped_word) = ( $stripped_word =~ /([^¿!ªº\d]+)/ ); #Some Spanish sigils and digits
-      next if !$stripped_word;
-      $tb->ok( $speller->check( encoder($stripped_word)->latin1),  $stripped_word);
+      next if !$word;
+      $tb->ok( $speller->check( encoder($word)->latin1),  $word);
     }
   }
 }
