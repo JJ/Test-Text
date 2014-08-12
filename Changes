@@ -1,3 +1,7 @@
+2014-08-13  JJ Merelo  <jmerelo@amy>
+
+	* lib/Test/Text.pm (just_check): Finished tests and changed encoding for test script.
+
 2014-08-12  JJ Merelo  <jmerelo@amy>
 
 	* lib/Test/Text.pm (check): Adds more strict extraction of words
