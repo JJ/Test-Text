@@ -68,7 +68,7 @@ sub check {
 
     for my $w (@words) {
       next if !$w;
-      $tb->ok( $speller->check( encoder($w)->latin1),  $word);
+      $tb->ok( $speller->check( encoder($w)->latin1),  $w);
     }
   }
 }
