@@ -7,7 +7,6 @@ use utf8; # Files and dictionaries might use utf8
 use Carp;
 use File::Slurp 'read_file';
 use Text::Hunspell;
-use Encode::Encoder qw(encoder);
 use v5.14;
 
 use version; our $VERSION = qv('0.1.5'); # Using utf8 all the way through
@@ -15,7 +14,6 @@ use version; our $VERSION = qv('0.1.5'); # Using utf8 all the way through
 use base 'Test::Builder::Module';
 
 my $CLASS = __PACKAGE__;
-our $word_re = qr/([\w\'áéíóúÁÉÍÓÚñÑçÇüÜ]+)/; # Unicode to take care of left question marks
 our @EXPORT= 'just_check';
 
 # Module implementation here
