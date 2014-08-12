@@ -66,7 +66,8 @@ sub check {
 
     for my $w (@words) {
       my ($stripped_word) = ( $w =~ $word_re );
-      ($stripped_word) = ( $stripped_word =~ /([^¿!ªº]+)/ ); #Some Spanish sigils
+      next if !$stripped_word;
+      ($stripped_word) = ( $stripped_word =~ /([^¿!ªº\d]+)/ ); #Some Spanish sigils and digits
       next if !$stripped_word;
       $tb->ok( $speller->check( encoder($stripped_word)->latin1),  $stripped_word);
     }
