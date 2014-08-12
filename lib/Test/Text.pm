@@ -67,8 +67,8 @@ sub check {
     my @words = ($file_content =~ m{\b(\p{L}+)\b}g);
 
     for my $w (@words) {
-      next if !$word;
-      $tb->ok( $speller->check( encoder($word)->latin1),  $word);
+      next if !$w;
+      $tb->ok( $speller->check( encoder($w)->latin1),  $word);
     }
   }
 }
