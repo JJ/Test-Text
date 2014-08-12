@@ -1,5 +1,9 @@
 use lib qw( ../lib ); # -*- cperl -*- 
 
+use strict;
+use warnings;
+use utf8;
+
 use Test::More;
 use Test::Text;
 

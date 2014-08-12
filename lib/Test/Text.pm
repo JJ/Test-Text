@@ -9,7 +9,7 @@ use File::Slurp 'read_file';
 use Text::Hunspell;
 use v5.14;
 
-use version; our $VERSION = qv('0.1.5'); # Using utf8 all the way through
+use version; our $VERSION = qv('0.1.6'); # Using utf8 all the way through
 
 use base 'Test::Builder::Module';
 
