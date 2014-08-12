@@ -2,6 +2,7 @@
 
 	* lib/Test/Text.pm (check): Adds more strict extraction of words
 	to avoid some Spanish sigils; changes tests to account for that.
+	(check): getting rid of old regexes and using proper Unicode for version 0.1.5
 
 2014-08-11  JJ Merelo  <jmerelo@amy>
 
