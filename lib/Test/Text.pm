@@ -77,6 +77,7 @@ sub just_check {
     my $language = shift || "en_US"; # Defaults to English
     my $tesxt = new Test::Text $dir, $data_dir, $language, @_;
     $tesxt->check();
+    $tesxt->done_testing;
 }
 
 sub done_testing {
