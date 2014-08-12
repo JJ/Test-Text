@@ -1,3 +1,8 @@
+2014-08-12  JJ Merelo  <jmerelo@amy>
+
+	* lib/Test/Text.pm (check): Adds more strict extraction of words
+	to avoid some Spanish sigils; changes tests to account for that.
+
 2014-08-11  JJ Merelo  <jmerelo@amy>
 
 	* lib/Test/Text.pm: Adds a few Spanish symbols to avoid UTF8 errors and corrects the Spanish affix file to avoid warnings. 
