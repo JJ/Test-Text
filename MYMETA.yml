@@ -25,4 +25,4 @@ requires:
   Test::Simple: 1
   Text::Hunspell: 2.08
   version: 0
-version: v0.1.6
+version: v0.1.7
