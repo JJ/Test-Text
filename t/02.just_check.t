@@ -4,6 +4,7 @@ use strict;
 use warnings;
 
 use Test::Text;
+use Test::More; #for diag
 
 my $dict_dir;
 
