@@ -31,7 +31,6 @@ isa_ok( $tesxt, "Test::Text");
 
 $tesxt->check();
 
-just_check( $text_dir, $dict_dir); # procedural interface, exported by default
 diag "Done English tests";
 
 if  ( -e "data/Spanish.aff" ) {

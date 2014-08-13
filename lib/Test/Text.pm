@@ -9,7 +9,7 @@ use File::Slurp 'read_file';
 use Text::Hunspell;
 use v5.14;
 
-use version; our $VERSION = qv('0.1.6'); # Using utf8 all the way through
+use version; our $VERSION = qv('0.1.7'); # One that works
 
 use base 'Test::Builder::Module';
 
@@ -93,11 +93,9 @@ __END__
 
 Test::Text - A module for testing text files for spelling and (maybe) more. 
 
-
 =head1 VERSION
 
-This document describes Test::Text version 0.1.2
-
+This document describes Test::Text version 0.1.7
 
 =head1 SYNOPSIS
 
@@ -114,8 +112,10 @@ This document describes Test::Text version 0.1.2
 
     $testxt->check(); # spell-checks plain or markdown text in that dir or just passed
 
-    just_check( $dir, $data ); # Exported by default, procedural interface
     $testxt->done_testing(); # all over and out
+
+    #Alternative procedural/single-function interface
+    just_check( $dir, $data ); # Includes done_testing
 
 
 =head1 DESCRIPTION
@@ -126,8 +126,11 @@ any kind of markdown-formatted text, be it fiction or non-fiction. The first ver
 as documentation, the novel itself (check it out at L<Text::Hoborg::Manuel> and also in the test
 directory the markdown source. 
 
-This module is a more general text-tester (that's a C<tesxter>) which can be used on any external set of texts.  
-This all came from the idea that L<writing is like software development|https://medium.com/i-m-h-o/6d154a43719c>, which I'm using throughout. 
+This module is a more general text-tester (that's a C<tesxter>) which
+can be used on any external set of texts.  This all came from the idea
+that L<writing is like software
+development|https://medium.com/i-m-h-o/6d154a43719c>, which I'm using
+throughout.
 
 You will need to install Hunspell and any dictionary you will be
     using. By default, Hunspell install quite a few and you can also
