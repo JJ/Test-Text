@@ -2,6 +2,20 @@ use strict;
 use warnings;
 use ExtUtils::MakeMaker;
 
+my %make;
+if ($ExtUtils::MakeMaker::VERSION > 6.64) {
+   $make{META_MERGE} = {
+    'meta-spec' => { version => 2 },
+        resources => {
+            repository => {
+                type => 'git',
+                url  => 'https://github.com/JJ/Test-Text.git',
+                web  => 'https://github.com/JJ/Test-Text',
+            },
+        },
+    };
+}
+
 WriteMakefile(
     NAME                => 'Test::Text',
     AUTHOR              => 'JJ Merelo <jj@merelo.net>',
@@ -20,4 +34,5 @@ WriteMakefile(
     },
     dist                => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
     clean               => { FILES => 'Test-Text-*' },
+    %make,
 );
