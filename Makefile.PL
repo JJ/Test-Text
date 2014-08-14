@@ -3,7 +3,7 @@ use warnings;
 use ExtUtils::MakeMaker;
 
 my %make;
-if ($ExtUtils::MakeMaker::VERSION > '6.46') {
+if ($ExtUtils::MakeMaker::VERSION > 6.64) {
    $make{META_MERGE} = {
     'meta-spec' => { version => 2 },
         resources => {
