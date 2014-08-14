@@ -20,4 +20,14 @@ WriteMakefile(
     },
     dist                => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
     clean               => { FILES => 'Test-Text-*' },
+    META_MERGE => {
+    'meta-spec' => { version => 2 },
+        resources => {
+            repository => {
+                type => 'git',
+                url  => 'https://github.com/JJ/Test-Text.git',
+                web  => 'https://github.com/JJ/Test-Text',
+            },
+        },
+    },
 );
