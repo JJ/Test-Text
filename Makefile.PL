@@ -2,6 +2,10 @@ use strict;
 use warnings;
 use ExtUtils::MakeMaker;
 
+print "$ExtUtils::MakeMaker::VERSION\n";
+print $ExtUtils::MakeMaker::VERSION > 6.90;
+print "\n";
+
 WriteMakefile(
     NAME                => 'Test::Text',
     AUTHOR              => 'JJ Merelo <jj@merelo.net>',
