@@ -10,9 +10,9 @@ use Text::Hoborg;
 diag( "Testing Text::Hoborg $Text::Hoborg::VERSION" );
 
 # You can use relative or absolute paths.
-my $text = new Lingua::EN::Fathom;
+my $text = Lingua::EN::Fathom->new;
 
-my $hoborg = new Text::Hoborg;
+my $hoborg = Text::Hoborg->new;
 $text->analyse_file($hoborg->text_file);
 my $fog = $text->fog;
 my $kincaid = $text->kincaid;

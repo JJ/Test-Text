@@ -26,7 +26,7 @@ if ( !-e $text_dir ) {
 
 diag "Using $text_dir for text";
 
-my $tesxt = new Test::Text $text_dir, $dict_dir;
+my $tesxt = Test::Text->new($text_dir, $dict_dir);
 isa_ok( $tesxt, "Test::Text");
 
 $tesxt->check();
@@ -44,7 +44,7 @@ if ( !-e $text_dir ) {
   $text_dir =  "../text/es";
 }
 
-$tesxt = new Test::Text $text_dir, $dict_dir, 'Spanish' ;
+$tesxt = Test::Text->new($text_dir, $dict_dir, 'Spanish');
 isa_ok( $tesxt, "Test::Text");
 $tesxt->check();
 
