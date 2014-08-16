@@ -75,7 +75,7 @@ sub just_check {
     my $dir = shift || croak "Need a directory with text" ;
     my $data_dir = shift || croak "No default spelling data directory\n";
     my $language = shift || "en_US"; # Defaults to English
-    my $tesxt = new Test::Text $dir, $data_dir, $language, @_;
+    my $tesxt = Test::Text->new($dir, $data_dir, $language, @_);
     $tesxt->check();
     $tesxt->done_testing;
 }
@@ -104,11 +104,11 @@ This document describes Test::Text version 0.1.7
     my $dir = "path/to/text_dir"; 
     my $data = "path/to/data_dir"; 
 
-    my $tesxt = new Test::Text $text_dir, $dict_dir; # Defaults to English: en_US and all files
+    my $tesxt = Test::Text->new($text_dir, $dict_dir); # Defaults to English: en_US and all files
 
-    $tesxt = new Test::Text $text_dir, $dict_dir, "en_US", $this_file, $that_file; # Tests only those files 
+    $tesxt = Test::Text->new($text_dir, $dict_dir, "en_US", $this_file, $that_file); # Tests only those files
 
-    $tesxt = new Test::Text $text_dir, $dict_dir, "es_ES"; # Uses alternate language 
+    $tesxt = Test::Text->new($text_dir, $dict_dir, "es_ES"); # Uses alternate language
 
     $testxt->check(); # spell-checks plain or markdown text in that dir or just passed
 
