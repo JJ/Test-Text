@@ -5,13 +5,13 @@ use strict;
 use utf8; # Files and dictionaries might use utf8
 
 use Carp;
-use File::Slurp 'read_file';
+use File::Slurp::Tiny 'read_file';
 use Text::Hunspell;
 use v5.14;
 
-use version; our $VERSION = qv('0.1.7'); # One that works
+use version; our $VERSION = qv('0.1.8'); # Bug-quashing
 
-use base 'Test::Builder::Module';
+use base 'Test::Builder::Module'; # Included in Test::Simple
 
 my $CLASS = __PACKAGE__;
 our @EXPORT= 'just_check';
