@@ -1,3 +1,7 @@
+2014-08-16  JJ Merelo  <jmerelo@amy>
+
+	* lib/Test/Text.pm: Many patches from Gabor Szabo and eliminated File::Slurp dependency. Also suppressed legacy "uses"
+
 2014-08-13  JJ Merelo  <jmerelo@amy>
 
 	* t/02.just_check.t: Added this since it's got an independent done_testing

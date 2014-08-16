@@ -192,6 +192,12 @@ mainly. Latest version requires L<Test::Builder>. It also includes the
     intended to be used for CI, I had rather include these files in
     the distro. 
 
+If you use any language with heavy dependencies on UTF8 like Spanish,
+    the supplied dictionaries will be no use. Check the UTF
+    dictionaries available from SublimeText; even so, the Spanish
+    affix file yields warnings so you might want to use the version I
+    patched, available at the GitHub repo. 
+
 =head1 Development and bugs
 
 Development of this module is hosted at
@@ -211,6 +217,7 @@ L<Manuel, the Marvelous Mechanical
 
 JJ Merelo  C<< <jj@merelo.net> >>
 
+Gabor Szabo C<< <szabgab@cpan.org> >> has contributed many patches. And encouragement. 
 
 =head1 LICENCE AND COPYRIGHT
 
