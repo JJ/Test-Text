@@ -28,10 +28,9 @@ progress by telling you how many words you have written so far and in
 total.
 
 how can I use it?
-
 ---
 
-1. Save the files you want to be tested to a single directory, using
+1. Save the files you want to be tested to a single directory called `text`, using
 `.markdown`, `.txt` or `.md` extensions. That directory will also hold
 the `words.dic` where you will save real words that are not included
 in the general dictionary. That's your personal dictionary, for short.
