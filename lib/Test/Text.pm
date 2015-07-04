@@ -9,7 +9,7 @@ use File::Slurp::Tiny 'read_file';
 use Text::Hunspell;
 use v5.14;
 
-use version; our $VERSION = qv('0.1.8'); # Bug-quashing
+use version; our $VERSION = qv('0.2.0'); # More extensions
 
 use base 'Test::Builder::Module'; # Included in Test::Simple
 
@@ -24,7 +24,7 @@ sub new {
   my $language = shift || "en_US"; # Defaults to English
   my @files = @_ ; # Use all appropriate files in dir by default
   if (!@files ) {
-    @files = glob("$dir/*.md $dir/*.txt $dir/*.markdown)");
+    @files = glob("$dir/*.md $dir/*.tex $dir/*.txt $dir/*.markdown)");
   } else {
     @files = map( "$dir/$_", @files );
   }
