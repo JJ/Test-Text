@@ -141,8 +141,7 @@ You will need to install Hunspell and any dictionary you will be
     instance, you will have to obtain your own dictionary with UTF8
     codification, with the ones supplied with L<Sublime
     Text|https://github.com/SublimeText/Dictionaries/> being a very
-    good option. The Spanish files obtained there are included in this
-    module for testing purposes.
+    good option. The Spanish files obtained there are included in this module for testing purposes.
 
 =head1 INTERFACE
 
