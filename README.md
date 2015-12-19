@@ -37,7 +37,8 @@ the `words.dic` where you will save real words that are not included
 in the general dictionary. That's your personal dictionary, for short.
 
 2. Sign up for [Travis CI](http://travis-ci.org). You can use your
-GitHub account. Choose the repo where your text is and enable it.
+GitHub account. Choose the repo where your text is and enable it. You
+might have to sync your account if the repo has been recently created.
 
 3. Create a `.travis.yml` configuration file in the home directory of
 your repo. There are a couple of examples (English and Spanish) in
@@ -58,7 +59,13 @@ script: perl -MTAP::Harness -e 'use utf8; my $harness =
 TAP::Harness->new( { verbosity => 0} ); die "FAIL" if $harness->runtests( "just_check.t" )->failed;'
 ```
 
-and save it to that file.
+and save it to that file. You can also use examples
+[like this one for a data science manual](https://github.com/JJ/aprende-datos/blob/master/.travis.yml)
+directly:
+
+```
+wget https://github.com/JJ/aprende-datos/blob/master/.travis.yml
+```
 
 That's it. Every time you `push`, your text files will be checked and
 it will return the words that it does not know about. You can them fix
@@ -77,4 +84,11 @@ it does not work!
 ---
 
 You can raise [an issue](https://github.com/JJ/Test-Text/issues)
-requesting help. 
+requesting help.
+
+I'd like to help!
+---
+
+Help with other languages would be great. Adding tests other than pure
+spell checking, like grammar, would be great too.
+
