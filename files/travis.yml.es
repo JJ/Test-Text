@@ -5,6 +5,7 @@ language: perl
 perl:
   - "5.16"
 before_install:
+  - sudo apt-cache search libhunspell
   - sudo apt-get install libhunspell-1.3-0 libhunspell-dev
   - curl https://raw.githubusercontent.com/JJ/Test-Text/master/data/Spanish.aff -o Spanish.aff
   - curl https://raw.githubusercontent.com/SublimeText/Dictionaries/master/Spanish.dic -o Spanish.dic

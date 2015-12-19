@@ -1,11 +1,12 @@
 Test::Text
 =========
+
 [![Build Status](https://travis-ci.org/JJ/Test-Text.svg?branch=master)](https://travis-ci.org/JJ/Test-Text)
 
 Objective
 ---
 
-A module for testing and doing metrics on normal text. As in books or
+A module for testing and doing other kind of metrics on normal text. As in books or
 novels.  
 
 We're not there yet, but for the time being it is a pretty
