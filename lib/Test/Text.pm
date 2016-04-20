@@ -7,7 +7,7 @@ use utf8; # Files and dictionaries might use utf8
 use Carp;
 use File::Slurp::Tiny 'read_file';
 use Text::Hunspell;
-use v5.14;
+use v5.12;
 
 use version; our $VERSION = qv('0.4.0'); # More extensions
 
