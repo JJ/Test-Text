@@ -1,3 +1,8 @@
+2015-12-20  Juan J. merelo  <jmerelo@penny>
+
+	* lib/Test/Text.pm (check): Strips URL to avoid oh so many
+	non-dict words to creep up in the text. 
+
 2014-08-16  JJ Merelo  <jmerelo@amy>
 
 	* lib/Test/Text.pm: Many patches from Gabor Szabo and eliminated File::Slurp dependency. Also suppressed legacy "uses"

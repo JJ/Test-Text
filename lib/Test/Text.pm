@@ -9,7 +9,7 @@ use File::Slurp::Tiny 'read_file';
 use Text::Hunspell;
 use v5.14;
 
-use version; our $VERSION = qv('0.2.0'); # More extensions
+use version; our $VERSION = qv('0.3.0'); # More extensions
 
 use base 'Test::Builder::Module'; # Included in Test::Simple
 
@@ -37,8 +37,8 @@ sub new {
 
   # Speller declaration
   my $speller = Text::Hunspell->new(
-				  "$data_dir/$language.aff",    # Hunspell affix file
-				  "$data_dir/$language.dic"     # Hunspell dictionary file
+				  "$data_dir/$language.aff",    # Hunspell or other affix file
+				  "$data_dir/$language.dic"     # Hunspell or other dictionary file
 				   );
   croak if !$speller;
   $self->{'_speller'} = $speller;
@@ -62,6 +62,9 @@ sub check {
   my $speller = $self->{'_speller'};
   for my $f ( @{$self->files}) {
     my $file_content= read_file($f, binmode => ':utf8');
+    if ( $f =~ /(\.md|\.markdown)/ ) {
+      $file_content = _strip_urls( $file_content);
+    }
     my @words = ($file_content =~ m{\b(\p{L}+)\b}g);
 
     for my $w (@words) {
@@ -70,6 +73,13 @@ sub check {
     }
   }
 }
+
+sub _strip_urls {
+  my $text = shift || carp "No text";
+  $text =~ s/\[(.+?)\]\(\S+\)/$1/g;
+  return $text;
+}
+
 
 sub just_check {
     my $dir = shift || croak "Need a directory with text" ;
@@ -166,6 +176,10 @@ object, it is useful for other functions.
 =head2 check
 
 Check files. This is the only function you will have to call from from your test script.
+
+=head2 strip_urls( text )
+
+Strips URLs in Markdown format 
 
 =head2 just_check $text_dir, $data_dir [, $language = 'en_US'] [,  @files]
 
