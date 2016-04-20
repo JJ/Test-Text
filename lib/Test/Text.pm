@@ -248,6 +248,8 @@ JJ Merelo  C<< <jj@merelo.net> >>
 
 Gabor Szabo C<< <szabgab@cpan.org> >> has contributed many patches. And encouragement. 
 
+Regexes for markdown code taken from node-markdown https://github.com/JJ/node-markdown-spellcheck by Luke Page https://github.com/lukeapage
+
 =head1 LICENCE AND COPYRIGHT
 
 Copyright (c) 2014, JJ Merelo C<< <jj@merelo.net> >>. All rights reserved.
