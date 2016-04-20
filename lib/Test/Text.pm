@@ -9,7 +9,7 @@ use File::Slurp::Tiny 'read_file';
 use Text::Hunspell;
 use v5.14;
 
-use version; our $VERSION = qv('0.3.0'); # More extensions
+use version; our $VERSION = qv('0.4.0'); # More extensions
 
 use base 'Test::Builder::Module'; # Included in Test::Simple
 
@@ -64,6 +64,7 @@ sub check {
     my $file_content= read_file($f, binmode => ':utf8');
     if ( $f =~ /(\.md|\.markdown)/ ) {
       $file_content = _strip_urls( $file_content);
+      $file_content = _strip_code( $file_content);
     }
     my @words = ($file_content =~ m{\b(\p{L}+)\b}g);
 
@@ -77,6 +78,14 @@ sub check {
 sub _strip_urls {
   my $text = shift || carp "No text";
   $text =~ s/\[(.+?)\]\(\S+\)/$1/g;
+  return $text;
+}
+
+sub _strip_code {
+  my $text = shift || carp "No text";
+  $text =~ s/~~~[\w\W]*?~~~//g;
+  $text =~ s/```[\w\W]*?```//g;
+  $text =~ s/`[^`]*`//g;
   return $text;
 }
 
@@ -105,7 +114,7 @@ Test::Text - A module for testing text files for spelling and (maybe) more.
 
 =head1 VERSION
 
-This document describes Test::Text version 0.1.7
+This document describes Test::Text version 0.3.0
 
 =head1 SYNOPSIS
 
@@ -177,9 +186,16 @@ object, it is useful for other functions.
 
 Check files. This is the only function you will have to call from from your test script.
 
-=head2 strip_urls( text )
+=head2 _strip_urls( text )
 
 Strips URLs in Markdown format 
+
+=head2 _strip_code( text )
+
+Strips URLs in Markdown format 
+
+Strips some code marks in Markdown format
+
 
 =head2 just_check $text_dir, $data_dir [, $language = 'en_US'] [,  @files]
 

@@ -9,6 +9,7 @@ t/02.just_check.t
 text/en/words.dic
 text/en/text.md
 text/en/README.md
+text/en/code.md
 text/es/words.dic
 text/es/texto.md
 text/README.md
