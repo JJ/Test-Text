@@ -9,7 +9,7 @@ use File::Slurp::Tiny 'read_file';
 use Text::Hunspell;
 use v5.12;
 
-use version; our $VERSION = qv('0.4.0'); # More extensions
+use version; our $VERSION = qv('0.4.1'); # Fine-tuning regexes
 
 use base 'Test::Builder::Module'; # Included in Test::Simple
 
@@ -82,7 +82,7 @@ sub _strip_urls {
 }
 
 sub _strip_code {
-  my $text = shift || carp "No text";
+  my $text = shift || carp "No text in _strip_code";
   $text =~ s/~~~[\w\W]*?~~~//g;
   $text =~ s/```[\w\W]*?```//g;
   $text =~ s/`[^`]*`//g;
