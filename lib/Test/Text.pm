@@ -40,7 +40,7 @@ sub new {
 				  "$data_dir/$language.aff",    # Hunspell or other affix file
 				  "$data_dir/$language.dic"     # Hunspell or other dictionary file
 				   );
-  croak if !$speller;
+  croak "Couldn't create speller: $1" if !$speller;
   $self->{'_speller'} = $speller;
   $speller->add_dic("$dir/words.dic"); #word.dic should be in the text directory
   return $self;
