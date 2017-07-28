@@ -15,6 +15,7 @@ use base 'Test::Builder::Module'; # Included in Test::Simple
 
 my $CLASS = __PACKAGE__;
 our @EXPORT= 'just_check';
+binmode(STDOUT, ":utf8"); # get ready for UTF-8 output
 
 # Module implementation here
 sub new {

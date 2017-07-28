@@ -1,4 +1,4 @@
-#Introducing a bit of code
+# Introducing a bit of code
 
 ~~~
 document.writeln('Hello world');
@@ -11,3 +11,5 @@ And this would be somewhat more code
 ```
 my $zipi = zape;
 ```
+
+And we are all grateful to þor. 

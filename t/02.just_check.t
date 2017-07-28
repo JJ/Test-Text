@@ -24,7 +24,8 @@ if ( !-e $text_dir ) {
 }
 
 diag "Using $text_dir for text";
-
+binmode *STDOUT, ":encoding(utf8)";
+binmode *STDERR, ":encoding(utf8)";
 just_check( $text_dir, $dict_dir); # procedural interface, exported by default
 
 
