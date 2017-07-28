@@ -10,7 +10,7 @@ use File::Slurp::Tiny 'read_file';
 use Text::Hunspell;
 use v5.12;
 
-use version; our $VERSION = qv('0.4.1'); # More extensions
+use version; our $VERSION = qv('0.4.2'); # Works with UTF8
 
 use base 'Test::Builder::Module'; # Included in Test::Simple
 
@@ -46,7 +46,7 @@ sub new {
 				  "$data_dir/$language.aff",    # Hunspell or other affix file
 				  "$data_dir/$language.dic"     # Hunspell or other dictionary file
 				   );
-  croak if !$speller;
+  croak "Couldn't create speller: $1" if !$speller;
   $self->{'_speller'} = $speller;
   $speller->add_dic("$dir/words.dic"); #word.dic should be in the text directory
   return $self;
@@ -87,7 +87,7 @@ sub _strip_urls {
 }
 
 sub _strip_code {
-  my $text = shift || carp "No text";
+  my $text = shift || carp "No text in _strip_code";
   $text =~ s/~~~[\w\W]*?~~~//g;
   $text =~ s/```[\w\W]*?```//g;
   $text =~ s/`[^`]*`//g;
