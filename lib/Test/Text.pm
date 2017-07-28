@@ -3,13 +3,14 @@ package Test::Text;
 use warnings;
 use strict;
 use utf8; # Files and dictionaries might use utf8
+use Encode;
 
 use Carp;
 use File::Slurp::Tiny 'read_file';
 use Text::Hunspell;
 use v5.12;
 
-use version; our $VERSION = qv('0.4.0'); # More extensions
+use version; our $VERSION = qv('0.4.1'); # More extensions
 
 use base 'Test::Builder::Module'; # Included in Test::Simple
 
@@ -72,10 +73,9 @@ sub check {
       $file_content = _strip_code( $file_content);
     }
     my @words = ($file_content =~ m{\b(\p{L}+)\b}g);
-
     for my $w (@words) {
       next if !$w;
-      $tb->ok( $speller->check( $w),  "'$w'");
+      $tb->ok( $speller->check( $w),  "'". encode_utf8($w) . "'");
     }
   }
 }
