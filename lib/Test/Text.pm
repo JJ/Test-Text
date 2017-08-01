@@ -89,8 +89,8 @@ sub _strip_urls {
 sub _strip_code {
   my $text = shift || carp "No text in _strip_code";
   $text =~ s/~~~[\w\W]*?~~~//g;
-  $text =~ s/```[\w\W]*?```//g;
-  $text =~ s/`[^`]*`//g;
+  $text =~ s/```[\w\W]+?```//g;
+  $text =~ s/`[^`]+?`//g;
   return $text;
 }
 
