@@ -2,3 +2,4 @@ MYMETA.*
 Makefile
 *.gz
 blib/
+pm_to_blib
