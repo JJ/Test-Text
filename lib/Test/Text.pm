@@ -10,7 +10,7 @@ use File::Slurp::Tiny 'read_file';
 use Text::Hunspell;
 use v5.12;
 
-use version; our $VERSION = qv('0.4.2'); # Works with UTF8
+use version; our $VERSION = qv('0.5.0'); # Works with UTF8
 
 use base 'Test::Builder::Module'; # Included in Test::Simple
 
@@ -75,7 +75,7 @@ sub check {
     my @words = ($file_content =~ m{\b(\p{L}+)\b}g);
     for my $w (@words) {
       next if !$w;
-      $tb->ok( $speller->check( $w),  "'". encode_utf8($w) . "'");
+      $tb->ok( $speller->check( $w),  "$f >> '". encode_utf8($w) . "'");
     }
   }
 }
