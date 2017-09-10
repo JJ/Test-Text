@@ -93,5 +93,7 @@ I'd like to help!
 ---
 
 Help with other languages would be great. Adding tests other than pure
-spell checking, like grammar, would be great too.
+spell checking, like grammar, would be great too. Check out
+the [issues](https://github.com/JJ/Test-Text/issues) and
+the [TODO file](TODO.md) for ideas, or create your own issues. 
 
