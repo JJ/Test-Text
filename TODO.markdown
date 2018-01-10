@@ -9,4 +9,4 @@ Additional to https://github.com/JJ/Test-Text/issues/
 [x] Write short HOWTO for those who want to use it for continuous
    integration of their novels.
 [x] Write a real README file.
-
+[ ] Make possible several text directories.
