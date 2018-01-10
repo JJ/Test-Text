@@ -25,7 +25,7 @@ BEGIN {
 # Module implementation here
 sub new {
   my $class = shift;
-  my $dir = shift || croak "Need a directory with text" ;
+  my $dir = shift || croak "Need a single directory with text" ;
   my $data_dir = shift || croak "No default spelling data directory\n";
   my $language = shift || "en_US"; # Defaults to English
   my @files = @_ ; # Use all appropriate files in dir by default
@@ -119,7 +119,7 @@ Test::Text - A module for testing text files for spelling and (maybe) more.
 
 =head1 VERSION
 
-This document describes Test::Text version 0.3.0
+This document describes Test::Text version 0.5.0
 
 =head1 SYNOPSIS
 
@@ -257,7 +257,7 @@ Regexes for markdown code taken from node-markdown https://github.com/JJ/node-ma
 
 =head1 LICENCE AND COPYRIGHT
 
-Copyright (c) 2014, JJ Merelo C<< <jj@merelo.net> >>. All rights reserved.
+Copyright (c) 2014, 2017, JJ Merelo C<< <jj@merelo.net> >>. All rights reserved.
 
 This module is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself. See L<perlartistic>.
