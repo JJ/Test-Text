@@ -67,6 +67,7 @@ sub check {
   my $self = shift;
   my $tb= $CLASS->builder;
   my $speller = $self->{'_speller'};
+  my %vocabulary;
   my @sentences;
   for my $f ( @{$self->files}) {
     my $file_content= read_file($f, binmode => ':utf8');
@@ -79,8 +80,11 @@ sub check {
     my @words = ($file_content =~ m{\b(\p{L}+)\b}g);
     for my $w (@words) {
       next if !$w;
+      $vocabulary{lc($w)}++;
       $tb->ok( $speller->check( $w),  "$f >> '". encode_utf8($w) . "'");
     }
+    my $different_words = scalar keys %vocabulary;
+    $tb->cmp_ok(  $different_words, ">", 1, "We have $different_words different words");
   }
 }
 
