@@ -8,9 +8,10 @@ use Encode;
 use Carp;
 use File::Slurp::Tiny 'read_file';
 use Text::Hunspell;
+use Text::Sentence qw(split_sentences);
 use v5.12;
 
-use version; our $VERSION = qv('0.5.0'); # Works with UTF8
+use version; our $VERSION = qv('0.6.0'); # Works with UTF8
 
 use base 'Test::Builder::Module'; # Included in Test::Simple
 
@@ -66,12 +67,15 @@ sub check {
   my $self = shift;
   my $tb= $CLASS->builder;
   my $speller = $self->{'_speller'};
+  my @sentences;
   for my $f ( @{$self->files}) {
     my $file_content= read_file($f, binmode => ':utf8');
     if ( $f =~ /(\.md|\.markdown)/ ) {
       $file_content = _strip_urls( $file_content);
       $file_content = _strip_code( $file_content);
     }
+    push @sentences, split_sentences( $file_content );
+    $tb->cmp_ok( scalar @sentences, ">", 1, "We have " . $#sentences + 1 . " sentences");
     my @words = ($file_content =~ m{\b(\p{L}+)\b}g);
     for my $w (@words) {
       next if !$w;
