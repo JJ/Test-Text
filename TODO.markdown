@@ -9,5 +9,5 @@ Additional to https://github.com/JJ/Test-Text/issues/
 [x] Write short HOWTO for those who want to use it for continuous
    integration of their novels.
 [x] Write a real README file.
-[ ] Count words and sentences.
+[x] Count words and sentences.
 [ ] Have proper Markdown, text and org support. 

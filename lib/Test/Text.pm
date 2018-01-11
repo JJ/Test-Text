@@ -75,7 +75,7 @@ sub check {
       $file_content = _strip_code( $file_content);
     }
     push @sentences, split_sentences( $file_content );
-    $tb->cmp_ok( scalar @sentences, ">", 1, "We have " . $#sentences + 1 . " sentences");
+    $tb->cmp_ok( scalar @sentences, ">=", 1, "We have " . ($#sentences + 1) . " sentences");
     my @words = ($file_content =~ m{\b(\p{L}+)\b}g);
     for my $w (@words) {
       next if !$w;
