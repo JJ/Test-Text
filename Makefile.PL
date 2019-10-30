@@ -29,7 +29,6 @@ WriteMakefile(
 		  'File::Slurp::Tiny' => 0,
 		  'Text::Hunspell' => 2.08,
 		  'Encode' => 0,
-		  'Text::Sentence' => 0,
 		  'Test::Simple' => 1.0 #base class 
     },
     dist                => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
