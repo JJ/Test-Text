@@ -8,10 +8,10 @@ use Encode;
 use Carp;
 use File::Slurp::Tiny 'read_file';
 use Text::Hunspell;
-use Text::Sentence qw(split_sentences);
-use v5.12;
+use Test::Text::Sentence qw(split_sentences);
+use v5.22;
 
-use version; our $VERSION = qv('0.6.0'); # Works with UTF8 and includes Text::Sentence
+use version; our $VERSION = qv('0.6.1'); # Works with UTF8 and includes Text::Sentence
 
 use base 'Test::Builder::Module'; # Included in Test::Simple
 

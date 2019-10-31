@@ -6,7 +6,7 @@ use utf8;
 
 use Test::More;
 use File::Slurp::Tiny 'read_file';
-use Text::Sentence qw(split_sentences);
+use Test::Text::Sentence qw(split_sentences);
 
 my $dir = 'text/en';
 if ( !-e $dir ) {

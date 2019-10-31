@@ -1,4 +1,4 @@
-package Text::Sentence;
+package Test::Text::Sentence;
 
 #==============================================================================
 #
@@ -8,11 +8,11 @@ package Text::Sentence;
 
 =head1 NAME
 
-Text::Sentence - module for splitting text into sentences
+Test::Text::Sentence - module for splitting text into sentences
 
 =head1 SYNOPSIS
 
-    use Text::Sentence qw( split_sentences );
+    use Test::Text::Sentence qw( split_sentences );
     use locale;
     use POSIX qw( locale_h );
 
@@ -21,7 +21,7 @@ Text::Sentence - module for splitting text into sentences
 
 =head1 DESCRIPTION
 
-The C<Text::Sentence> module contains the function split_sentences, which
+The C<Test::Text::Sentence> module contains the function split_sentences, which
 splits text into its constituent sentences, based on a fairly approximate
 regex. If you set the locale before calling it, it will deal correctly with
 locale dependant capitalization to identify sentence boundaries. Certain well
