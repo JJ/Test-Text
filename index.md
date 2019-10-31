@@ -105,6 +105,6 @@ LICENSES
 ---
 
 This distribution is licensed under the GPL. In includes
-`Text::Sentence`,
+`Test::Text::Sentence`, originally `Text::Sentence`
 from [`HTML::Summary`](https://metacpan.org/pod/HTML::Summary), (c) by
 NEILB, initial copyright by CRE, and licensed under the Artistic license.
