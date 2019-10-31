@@ -10,3 +10,6 @@ Additional to https://github.com/JJ/Test-Text/issues/
    integration of their novels.
 [x] Write a real README file.
 [ ] Make possible several text directories.
+[x] Count words and sentences.
+[ ] Have proper Markdown, text and org support. 
+
