@@ -86,6 +86,7 @@ sub check {
     my $different_words = scalar keys %vocabulary;
     $tb->cmp_ok(  $different_words, ">", 1, "We have $different_words different words");
   }
+
 }
 
 sub _strip_urls {
@@ -109,7 +110,6 @@ sub just_check {
     my $language = shift || "en_US"; # Defaults to English
     my $tesxt = Test::Text->new($dir, $data_dir, $language, @_);
     $tesxt->check();
-    $tesxt->done_testing;
 }
 
 sub done_testing {

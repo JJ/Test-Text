@@ -28,3 +28,4 @@ diag "Using $text_dir for text";
 just_check( $text_dir, $dict_dir); # procedural interface, exported by default
 
 
+done_testing;
