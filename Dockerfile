@@ -8,8 +8,7 @@ RUN mkdir /test \
     && apt-get install -y build-essential curl hunspell-en-us libtext-hunspell-perl myspell-es libencode-perl cpanminus libfile-slurp-tiny-perl libversion-perl\
     && curl https://raw.githubusercontent.com/SublimeText/Dictionaries/master/Spanish.dic -o Spanish.dic
 
-RUN cpanm Test::More
-RUN perl Makefile.PL && make install
+RUN cpanm .
 RUN perl --version
 VOLUME /test
 WORKDIR /test
