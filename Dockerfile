@@ -2,7 +2,11 @@ FROM ubuntu:16.04
 LABEL version="1.0" maintainer="JJ Merelo <jjmerelo@GMail.com>" perl5version="5.22"
 
 ADD data/* ./
-ADD . .
+ADD data/ data/
+ADD lib/ lib/
+ADD text/ text/
+ADD t/ t/
+ADD cpanfile Makefile.PL ./
 RUN mkdir /test \
     && apt-get update \
     && apt-get install -y build-essential curl hunspell-en-us libtext-hunspell-perl myspell-es libencode-perl cpanminus libfile-slurp-tiny-perl libversion-perl\
