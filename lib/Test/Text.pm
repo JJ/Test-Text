@@ -49,18 +49,16 @@ sub new {
 				   );
   croak "Couldn't create speller: $1" if !$speller;
   $self->{'_speller'} = $speller;
-  $speller->add_dic("$dir/words.dic"); #word.dic should be in the text directory
+  $speller->add_dic("$dir/words.dic"); # word.dic should be in the text directory
   return $self;
 }
 
 sub dir {
-    my $self = shift;
-    return $self->{'_dir'};
+    return shift->{'_dir'};
 }
 
 sub files {
-  my $self = shift;
-  return $self->{'_files'};
+  return shift->{'_files'};
 }
 
 sub check {
