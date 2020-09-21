@@ -13,7 +13,7 @@ use v5.22;
 
 use version; our $VERSION = qv('0.6.2'); # Works with UTF8 and includes Text::Sentence
 
-use base 'Test::Builder::Module'; # Included in Test::Simple
+use parent 'Test::Builder::Module'; # Included in Test::Simple
 
 my $CLASS = __PACKAGE__;
 our @EXPORT= 'just_check';
@@ -106,10 +106,13 @@ sub just_check {
     my $dir = shift || croak "Need a directory with text" ;
     my $data_dir = shift || croak "No default spelling data directory\n";
     my $language = shift || "en_US"; # Defaults to English
-    my $call_done_testing = shift || 1; # Defaults to calling it
+    my $call_done_testing = shift // 1; # Defaults to 1
     my $tesxt = Test::Text->new($dir, $data_dir, $language, @_);
-    $tesxt->check();
-    done_testing() if $call_done_testing;
+    my $tb= $CLASS->builder;
+    $tb->subtest( "Testing $dir" => sub {
+      $tesxt->check();
+    });
+    $tb->done_testing() if $call_done_testing;
 }
 
 sub done_testing {
