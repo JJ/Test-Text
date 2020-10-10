@@ -25,12 +25,10 @@ jobs:
         run: |
           apt-get update && apt-get upgrade -y && apt-get install -y libtext-hunspell-perl
       - uses: actions/checkout@v2
-      - name: Usa install-with-cpm
+      - name: Install modules from CPAN
         uses: perl-actions/install-with-cpm@stable
         with:
-          install: |
-            Test::Text
-            TAP::Harness
+          install: TAP::Harness
           sudo: false
       - name: Comprueba la ortografía
         run: |
