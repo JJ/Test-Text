@@ -7,7 +7,7 @@ Objective
 ---
 
 A module for testing and doing other kind of metrics on regular text, as in books or
-novels, or, for that matter, manuals. 
+novels, or, for that matter, manuals.
 
 We're not there yet, but for the time being it is a pretty
 good spelling checker that can be used *on the cloud* in continuous
@@ -82,6 +82,13 @@ FooBar
 ```
 
 Simple enough, ain't it?
+
+You can also directly
+use
+[this GitHub action](https://github.com/JJ/IV/blob/master/.github/workflows/check-readme.yml) in
+your repository to have the README checked. It deletes all markdown
+elements that are not README, you might have to adapt it to your
+situation (or leave it there).
 
 it does not work!
 ---
