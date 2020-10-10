@@ -35,7 +35,7 @@ sub new {
   } else {
     @files = map( "$dir/$_", @files );
   }
-  my $self = { 
+  my $self = {
 	      _dir => $dir,
 	      _data_dir => $data_dir,
 	      _files => \@files
@@ -89,7 +89,7 @@ sub check {
 
 sub _strip_urls {
   my $text = shift || carp "No text";
-  $text =~ s/\[(.+?)\]\(\S+\)/$1/g;
+  $text =~ s/\[(.+?)\]\(\S+\)/$1/sg;
   return $text;
 }
 
