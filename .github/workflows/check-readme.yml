@@ -32,5 +32,5 @@ jobs:
           sudo: false
       - name: Comprueba la ortografía
         run: |
-          echo "use lib qw(lib); use Test::Text; just_check( '.','.', 'English' ); " > just_check.t
+          echo "use lib qw(lib); use Test::Text; just_check( '.','data', 'en_US' ); " > just_check.t
           perl -MTAP::Harness -e 'use utf8; my $harness = TAP::Harness->new( { verbosity => 0} ); die "FAIL" if $harness->runtests( "just_check.t" )->failed;'
