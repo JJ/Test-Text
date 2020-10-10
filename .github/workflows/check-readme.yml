@@ -1,4 +1,4 @@
-name: "Comprueba README"
+name: "Checks README"
 
 on:
   push:
@@ -14,7 +14,7 @@ on:
       - '.github/workflows/check-readme.yml'
       
 jobs:
-  OrtografiaReadme:
+  SpellCheckReadme:
     runs-on: ubuntu-latest
 
     container:
@@ -30,7 +30,7 @@ jobs:
         with:
           install: TAP::Harness
           sudo: false
-      - name: Comprueba la ortografía
+      - name: Checks spelling
         run: |
           echo "use lib qw(lib); use Test::Text; just_check( '.','data', 'en_US' ); " > just_check.t
           perl -MTAP::Harness -e 'use utf8; my $harness = TAP::Harness->new( { verbosity => 0} ); die "FAIL" if $harness->runtests( "just_check.t" )->failed;'
