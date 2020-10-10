@@ -5,12 +5,14 @@ on:
     paths:
       - 'README.md'
       - 'words.dic'
+      - '.github/workflows/check-readme.yml'
 
   pull_request:
     paths:
       - 'README.md'
       - 'words.dic'
-
+      - '.github/workflows/check-readme.yml'
+      
 jobs:
   OrtografiaReadme:
     runs-on: ubuntu-latest
