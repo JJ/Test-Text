@@ -6,7 +6,7 @@ use utf8; # Files and dictionaries might use utf8
 use Encode;
 
 use Carp;
-use File::Slurp::Tiny 'read_file';
+use Path::Tiny;
 use Text::Hunspell;
 use Test::Text::Sentence qw(split_sentences);
 use v5.22;
@@ -68,7 +68,7 @@ sub check {
   my %vocabulary;
   my @sentences;
   for my $f ( @{$self->files}) {
-    my $file_content= read_file($f, binmode => ':utf8');
+    my $file_content= path($f)->slurp_utf8;
     if ( $f =~ /(\.md|\.markdown)/ ) {
       $file_content = _strip_urls( $file_content);
       $file_content = _strip_code( $file_content);
