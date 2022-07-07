@@ -1,6 +1,7 @@
 2022-07-07  jmerelo  <jmerelo@princess-carolyn>
 
 	* lib/Test/Text.pm: New version fixes the problem that Rmd were not stripped.
+	And newest restores old regex.
 
 2020-10-10  jmerelo  <jmerelo@princess-carolyn>
 Revision history for Perl module Test::Text

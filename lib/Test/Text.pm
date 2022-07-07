@@ -11,7 +11,7 @@ use Text::Hunspell;
 use Test::Text::Sentence qw(split_sentences);
 use v5.22;
 
-use version; our $VERSION = qv('0.6.6'); # Really works with RMarkdown
+use version; our $VERSION = qv('0.6.7'); # Really works with RMarkdown
 
 use parent 'Test::Builder::Module'; # Included in Test::Simple
 
