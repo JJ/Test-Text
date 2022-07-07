@@ -1,0 +1,12 @@
+---
+title: This is a Rmarkdown file foobar
+---
+
+# Introducing Rmarkdown files
+
+Here is a chunk
+
+```{r foo, BAR baz}
+library(ggplot2)
+```
+
