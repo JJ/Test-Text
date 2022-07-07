@@ -31,7 +31,7 @@ sub new {
   my $language = shift || "en_US"; # Defaults to English
   my @files = @_ ; # Use all appropriate files in dir by default
   if (!@files ) {
-    @files = glob("$dir/*.md $dir/*.tex $dir/*.txt $dir/*.markdown)");
+    @files = glob("$dir/*.md $dir/*.tex $dir/*.txt $dir/*.markdown $dir/*.Rmd $dir/*.Rmarkdown)");
   } else {
     @files = map( "$dir/$_", @files );
   }
