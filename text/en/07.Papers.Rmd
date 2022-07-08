@@ -1,0 +1,188 @@
+---
+title: "Agile development"
+author: "JJ Merelo"
+date: "27/5/2022"
+output:
+  pdf_document: default
+  html_document: default
+bibliography: ../mlops.bib
+---
+# Deploy-to-paper
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(arrow)
+df <- read_parquet("../data/ukr-mod-data.parquet")
+tanks.data <-as.integer(df[ df$` Item` == " tanks",]$` Total` )
+```
+
+## TL;DR
+
+Data science and MLOps is very amenable to the creation of workflows that end
+with a continuously updated paper, poster or presentation. We will see in this
+last chapter how to do it.
+
+## Learning outcomes of this unit
+
+Integrate ML workflow results in a report or paper that will be continuously
+updated when data changes. At least an example of such type of languages and
+tools will be learned.
+
+## Acceptance criteria
+
+The updateable paper needs to be created, with workflows that trigger their
+change.
+
+## "Active" publishing artifacts
+
+The last stage of a MLOps workflow is continuous deployment; eventually, your
+workflow will need to *work*. We need then to tool our way into doing
+so. Continuous deployment tools are already known, although we will probably
+need to show examples; however, *what* to deploy is a different issue.
+
+There are obviously many options to perform deployment. Programs  and APIs can
+be created around the trained data, and we can deploy to an endpoint.
+
+One of the possible ways of deploying a workflow is creating a
+continuously-updated paper that is uploaded to GitHub or somewhere else. There
+are several technologies that can be employed for that, but one of the simplest
+is R Markdown, which is the one that is being used for this material.
+
+In general, weaving text with code is called *literary programming*; in general
+also, how it works is by using tools called *weave* or *unweave* that
+pre-process the source, run the code and capture output to integrate it in the
+paper, and the final compilation of all source, original and generated, into a
+single *artifact* that can be a paper or can include *active* elements like
+interactive charts or even running programs.
+
+The use case for this kind of artifact is, within the realm of open science,
+create non-static papers that present, visualize or even run whole workflows
+under request.
+
+There are many different ways of doing this, as many as possible scripting
+languages and document description languages. As the latter, you have LaTeX and
+Markdown, basically; as the latter, R and Python are the two most popular ones
+(but we can include Julia recently too).
+
+> In our research group we use Knitr (similar to RMarkdown, for LaTeX)
+> routinely. For instance, in [@wea20] we used it to include all experimental
+> data and create charts on the fly. "Deployment to papers" is excellent to
+> obtain immediate reports when data in a ML workflow is updated, but even if
+> it a small pipeline that goes from experimental data to paper, it saves a lot
+> of work and ties data to the paper that uses it to create charts, allowing
+> re-generation very easily.
+
+You are probably already familiar with Markdown, and we will have used examples
+with R along this course. At any rate, we will work with R since we can run the
+whole way from simple scripts to whole ML workflows, through simple data
+manipulation and visualization scripts which will be all we will be doing here.
+
+We will be using [RStudio](https://rstudio.com) for this part, at least the
+initial development; eventually it will be generated from a workflow, but the
+development part is quite conveniently done here.
+
+## Anatomy of RMarkdown files
+
+These files have two different parts: the YAML front matter, and the weaved text
+and R code. YAML is a data serialization format that is used extensively
+throughout DevOps workflows. By now we will have already seen examples in the
+GitHub Actions, for instance. This is the metadata included in this very file:
+
+```yaml
+---
+title: "Agile development"
+author: "JJ Merelo"
+date: "27/5/2022"
+output:
+  pdf_document: default
+  html_document: default
+bibliography: ../mlops.bib
+---
+```
+
+Besides including metadata like title or author, as well as instructions for
+RStudio, which is the IDE used for this task, it includes also a pointer to a
+bibliography file, placed in the upper directory. This is placed among the three
+dashed lines that mark the beginning and end of a YAML "document". Right below,
+we will start the text+code itself.
+
+You do not need to make any kind of change to Markdown in order to insert
+code. What will be executed will also follow the regular *fenced* syntax you use
+for code in Markdown; the only difference is that it will have some arguments
+that will help interpret it. For instance, this code is at the top of this file,
+invisible:
+
+```markdown
+{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(arrow)
+df <- read_parquet("../data/ukr-mod-data.parquet")
+tanks.data <-as.integer(df[ df$` Item` == " tanks",]$` Total` )
+```
+
+> These will be surrounded by code fencing marks, the three backticks. Not
+> included here to avoid linting errors. Check [the
+> original](https://github.com/JJ/nova-mlops/blob/3dc7c1e374ea51d61037f87ac24c8f6c0d4c7f5f/text/07.Papers.md?plain=1#L12-L17)
+> at the repository.
+
+The braced statement says that it is
+written in R, gives it a name, `setup`, and also says that the result is not
+going to be included in the document (`include=FALSE`); this is why it is
+silent.
+
+The rest is simply the first part of the script. It loads a library, `arrow`,
+that interprets the Parquet format, and creates a new data structure we will use
+later on in the text. For instance, right below:
+
+```{r tanks}
+summary(tanks.data)
+```
+
+In this case, we tell the chunk to simply be visible. It is a summary of an ever
+increasing quantity, which means that averages and so on are not going to be
+terribly interesting. But it serves to illustrate the concept.
+
+We can create charts using `ggplot2`, for instance, and they will be
+automatically saved in place, like we will do below.
+
+RMarkdown files also include other goodies; for instance, they can include
+bibliography that is extracted from `.bib` files, such as the one indicated in
+the front matter above and actually used in this paper.
+
+## Processing these files automatically
+
+This would not be MLOps if these files were not processed automatically. They
+can be triggered, for instance, every time data file changes.
+
+> As we have indicated several times, development hosting sites such as GitHub
+> do have the complete set of tools that allow you to create MLOps
+> workflows. You can opt for a monolithic solution, but looking at every step
+> piecewise and looking for good solutions is all good, as long as they allow to
+> automatically work from end to end.
+
+We have already learned how to include Github workflows for processing our
+stuff. This is more of the same, except that in this case we will have to work
+with R and the rest of the tools (including `pandoc`) that are needed to
+generate these files.
+
+> Incidentally, workflows that are very similar to these ones can be used to
+> automatically test and generate a LaTeX file from source, as well as upload it
+> to the repository or somewhere else. Basically everything that can, should be
+> automated.
+
+## Activity
+
+As indicated in the acceptance criteria, the team will have to elaborate a
+short report, poster or presentation that will be continuously updated when data
+changes. It can include (or not) training, as well as model registry.
+
+## See also
+
+With [`Pweave`](https://mpastell.com/pweave/) you can create reports using
+Python, instead of R. It can be handled from the Atom IDE, for
+instance. Unfortunately, it does not seem to very active
+lately. [`Weave.jl`](https://github.com/JunoLab/Weave.jl) seems slightly more
+active, but not much. At the end of the day, RMarkdown is actively developed and
+seems to be the best option for this kind of artifact.
+
+## References
