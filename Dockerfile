@@ -1,5 +1,5 @@
-FROM ubuntu:16.04
-LABEL version="1.0" maintainer="JJ Merelo <jjmerelo@GMail.com>" perl5version="5.22"
+FROM ubuntu:latest
+LABEL version="1.0.1" maintainer="JJ Merelo <jjmerelo@GMail.com>" perl5version="5.22"
 
 RUN mkdir /home/install
 WORKDIR /home/install
